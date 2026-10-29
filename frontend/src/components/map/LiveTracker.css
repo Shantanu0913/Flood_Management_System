@@ -1,0 +1,283 @@
+/* ═══════════════════════════════════════════
+   CITIZEN LIVE TRACKER — "Help is on the way"
+   ═══════════════════════════════════════════ */
+
+.live-tracker-citizen {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  background: rgba(11, 15, 26, 0.95);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  border-radius: 16px;
+  padding: 16px 20px;
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(46, 204, 113, 0.1);
+}
+
+.tracker-citizen-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  color: #2ECC71;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.tracker-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ECC71;
+  animation: trackerPulse 1.5s infinite;
+}
+
+@keyframes trackerPulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6);
+  }
+  50% { 
+    box-shadow: 0 0 0 6px rgba(46, 204, 113, 0);
+  }
+}
+
+.tracker-citizen-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.tracker-resource-type {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+.tracker-resource-id {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.tracker-eta-display {
+  text-align: right;
+}
+
+.tracker-eta-number {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: #FFC857;
+  font-weight: bold;
+}
+
+.tracker-eta-label {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.tracker-arrived-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  color: #2ECC71;
+  letter-spacing: 2px;
+}
+
+.tracker-citizen-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tracker-coords {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.tracker-status-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  color: #2ECC71;
+  letter-spacing: 1px;
+}
+
+.tracker-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2ECC71;
+  animation: trackerPulse 1.5s infinite;
+}
+
+/* ═══════════════════════════════════════════
+   RESOURCE / ADMIN TRACKING PANEL
+   ═══════════════════════════════════════════ */
+
+.live-tracker-panel {
+  background: rgba(11, 15, 26, 0.8);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 12px;
+  padding: 12px;
+  backdrop-filter: blur(8px);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.tracker-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tracker-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  color: #00E5FF;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tracker-count {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.tracker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tracker-item {
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #FFC857;
+}
+
+.tracker-item.tracker-arrived {
+  border-left-color: #2ECC71;
+  opacity: 0.7;
+}
+
+.tracker-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.tracker-item-resource {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tracker-item-id {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  color: #00E5FF;
+  letter-spacing: 0.5px;
+}
+
+.tracker-item-type {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.tracker-item-eta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  color: #FFC857;
+  letter-spacing: 0.5px;
+}
+
+.tracker-item-eta.arrived {
+  color: #2ECC71;
+}
+
+.tracker-item-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tracker-item-person {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tracker-item-live {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.55rem;
+  color: #2ECC71;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.tracker-live-dot-sm {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #2ECC71;
+  animation: trackerPulse 1.5s infinite;
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .live-tracker-citizen {
+    bottom: 80px;
+    width: 95%;
+    padding: 14px 16px;
+  }
+
+  .tracker-eta-number {
+    font-size: 1rem;
+  }
+
+  .tracker-resource-id {
+    font-size: 0.85rem;
+  }
+}

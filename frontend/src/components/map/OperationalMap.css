@@ -1,0 +1,277 @@
+.custom-leaflet-icon,
+.resource-marker-icon,
+.sos-marker-icon,
+.blocked-road-icon,
+.citizen-self-marker {
+  background: transparent;
+  border: none;
+}
+
+/* Custom overlay styles for the leaflet map tooltips to fit our cyberpunk aesthetic */
+.leaflet-tooltip.custom-tooltip {
+  background-color: rgba(11, 15, 26, 0.95);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: inherit;
+  line-height: inherit;
+  max-width: 280px;
+}
+
+.leaflet-tooltip.blocked-road-tooltip {
+  border-color: rgba(255, 140, 0, 0.4);
+  min-width: 200px;
+}
+
+.road-tooltip-header {
+  display: flex;
+  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.sos-tooltip-header {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* Removing the default tooltip triangle pointer since our UI is glass */
+.leaflet-tooltip-top.custom-tooltip::before,
+.leaflet-tooltip-bottom.custom-tooltip::before,
+.leaflet-tooltip-left.custom-tooltip::before,
+.leaflet-tooltip-right.custom-tooltip::before {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════
+   RESOURCE MARKER ANIMATIONS
+   ═══════════════════════════════════════════ */
+
+.resource-marker {
+  transition: all 0.3s ease;
+}
+
+.resource-marker:hover {
+  transform: scale(1.15);
+}
+
+/* Arrived pulse — breathing glow */
+.arrived-pulse {
+  animation: arrivedPulse 2s infinite ease-in-out;
+}
+
+@keyframes arrivedPulse {
+  0%, 100% { 
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+    border-color: #00E5FF;
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8), 0 0 40px rgba(0, 229, 255, 0.3);
+    border-color: #4DF0FF;
+  }
+}
+
+/* En route glow — subtle traveling pulse */
+.en-route-glow {
+  animation: enRouteGlow 1.5s infinite ease-in-out;
+}
+
+@keyframes enRouteGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+/* Resource type label under icons */
+.resource-type-label {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.resource-marker:hover .resource-type-label {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════
+   SOS MARKER ANIMATIONS
+   ═══════════════════════════════════════════ */
+
+.sos-marker {
+  transition: all 0.3s ease;
+}
+
+/* Critical SOS — urgent pulsing ring */
+.sos-pulse-critical {
+  animation: sosPulse 1s infinite;
+}
+
+@keyframes sosPulse {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); 
+  }
+  70% { 
+    box-shadow: 0 0 0 12px rgba(255, 59, 59, 0); 
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(255, 59, 59, 0); 
+  }
+}
+
+/* Dispatched SOS — faded to indicate help is coming */
+.sos-dispatched {
+  animation: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   BLOCKED ROAD MARKER
+   ═══════════════════════════════════════════ */
+
+.road-block-marker {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.road-block-marker:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 140, 0, 0.5) !important;
+}
+
+/* ═══════════════════════════════════════════
+   CITIZEN "YOU" PIN
+   ═══════════════════════════════════════════ */
+
+.citizen-you-pin {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #00E5FF, #0088aa);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  color: #0B0F1A;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 40px rgba(0, 229, 255, 0.2);
+  animation: youPulse 2s infinite;
+}
+
+@keyframes youPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 40px rgba(0, 229, 255, 0.2);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.8), 0 0 60px rgba(0, 229, 255, 0.3);
+    transform: scale(1.05);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   LAYER CONTROL STYLES — Cyberpunk Themed
+   ═══════════════════════════════════════════ */
+
+.leaflet-control-layers {
+  background: rgba(11, 15, 26, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 229, 255, 0.2) !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+  font-family: 'Orbitron', sans-serif;
+  padding: 8px !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 12px !important;
+  min-width: 200px;
+}
+
+.leaflet-control-layers-base label,
+.leaflet-control-layers-overlays label {
+  margin-bottom: 6px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.leaflet-control-layers-base label:hover,
+.leaflet-control-layers-overlays label:hover {
+  color: #00E5FF;
+}
+
+.leaflet-control-layers-separator {
+  border-top: 1px solid rgba(0, 229, 255, 0.1);
+  margin: 10px -12px !important;
+}
+
+.leaflet-control-layers-section {
+  font-weight: bold;
+  color: #00E5FF;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Custom Checkbox/Radio styling */
+.leaflet-control-layers input[type="radio"],
+.leaflet-control-layers input[type="checkbox"] {
+  accent-color: #00E5FF;
+  cursor: pointer;
+}
+
+/* Keep Leaflet attribution styling subtle */
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: #888 !important;
+  font-size: 10px;
+}
+.leaflet-control-attribution a {
+  color: #00E5FF !important;
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE MAP CONTROLS
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .leaflet-control-layers {
+    font-size: 10px;
+    max-width: 180px;
+  }
+  
+  .leaflet-control-layers-expanded {
+    min-width: 160px;
+    padding: 8px !important;
+  }
+  
+  .leaflet-control-layers-base label,
+  .leaflet-control-layers-overlays label {
+    font-size: 9px;
+  }
+  
+  .resource-type-label {
+    display: none !important;
+  }
+  
+  .citizen-you-pin {
+    width: 30px;
+    height: 30px;
+    font-size: 7px;
+  }
+}

@@ -1,0 +1,234 @@
+/* ═══════════════════════════════════════════
+   DASHBOARD HOME — Stats, Map, Chat
+   ═══════════════════════════════════════════ */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.stat-card.danger {
+  border-left: 3px solid var(--danger);
+}
+
+.stat-card.warning {
+  border-left: 3px solid var(--warning);
+}
+
+.stat-card.success {
+  border-left: 3px solid var(--success);
+}
+
+/* Map Header */
+.map-header {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.map-title {
+  color: var(--primary);
+  font-size: 0.85rem;
+}
+
+/* Dashboard Chat Panel */
+.dashboard-chat-panel {
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Tablet (1024px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 1200px) {
+  .dashboard-chat-panel {
+    width: 320px;
+    min-width: 320px;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .dashboard-chat-panel {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+  }
+  
+  .stat-value {
+    font-size: 1rem;
+  }
+  
+  .dashboard-subtitle {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Mobile (768px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .dashboard-home-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .dashboard-badges {
+    align-items: flex-start !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .dashboard-badge-row {
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-incident-title {
+    font-size: 0.85rem !important;
+  }
+  
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem !important;
+  }
+  
+  .stat-card {
+    padding: 0.75rem;
+    gap: 0.7rem;
+  }
+  
+  .stat-icon-wrapper {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .stat-icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .stat-value {
+    font-size: 0.85rem;
+  }
+  
+  .stat-label {
+    font-size: 0.65rem;
+  }
+  
+  /* Stack map and chat vertically */
+  .dashboard-main-row {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .dashboard-chat-panel {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    max-height: 300px;
+  }
+  
+  .map-container {
+    min-height: 350px !important;
+    height: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Small Mobile (480px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+  
+  .stat-card {
+    padding: 0.6rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .stat-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .stat-value {
+    font-size: 0.75rem;
+  }
+  
+  .stat-label {
+    font-size: 0.6rem;
+  }
+  
+  .dashboard-incident-title {
+    font-size: 0.7rem !important;
+  }
+  
+  .map-header {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .map-title {
+    font-size: 0.7rem;
+  }
+  
+  .dashboard-chat-panel {
+    max-height: 250px;
+  }
+}
